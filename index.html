@@ -11,10 +11,12 @@
 <h1> Hello vue :)</h1>
 
 <div id="app">
+  
     <a v-bind:href="url" target="_blank">Best Man Ever</a>
     <div v-if="showBooks">
-<uL>
-    <li v-for="book in books">
+    <li v-for="book in books" :class="{ fav: book.isFav}" @click="toggleFav(book)">
+    <!-- <li v-for="book in filteredBook" :class="{ fav: book.isFav}" @click="toggleFav(book)"> -->
+        <img :src="book.img" :alt="book.title">
         <h3>{{ book.title }}</h3>
         <p>{{ book.author }}</p>
     </li>

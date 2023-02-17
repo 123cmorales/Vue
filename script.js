@@ -6,9 +6,9 @@ const app = Vue.createApp({
             url: 'https://netninja.dev/',
             showBooks: true,
             books: [
-                {title: 'wow', author: 'bobby'},
-                {title: 'eric', author: 'Cartman'},
-                {title: 'Jimmy', author: 'Timmah'},
+                {title: 'wow', author: 'bobby', img: 'img/JimmyValmer.png', isFav: true},
+                {title: 'eric', author: 'Cartman', img: 'img/KennyMcCormick.png', isFav: false },
+                {title: 'Jimmy', author: 'Timmah', img: 'img/Timmy.webp', isFav: true},
             ]
             // title: 'I am Heisenberg',
             // author: 'Walter Heartwell White',
@@ -21,6 +21,9 @@ const app = Vue.createApp({
         toggleShowBooks () {
             this.showBooks = !this.showBooks
         },
+        toggleFav(book) {
+            book.isFav = !book.isFav
+        }
         // handleEvent(e, data) {
         //     console.log(e, e.type)
         //     if (data) {
@@ -35,6 +38,11 @@ const app = Vue.createApp({
           // this.title = 'Los Pollos Hermanos'
           //this.title = abc;
         //}
+    },
+    computed: {
+        filteredBooks(){
+            return this.books.filter((book) => book.isFav)
+        }
     }
 });
 
